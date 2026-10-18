@@ -1,0 +1,57 @@
+# Excerpt of a lichess-bot config.yml for chess-engine.
+# Start from lichess-bot's config.yml.default and merge these sections into it.
+
+token: ""  # prefer the LICHESS_BOT_TOKEN environment variable
+
+engine:
+  dir: "../chess-engine/build/"
+  name: "chess-engine"
+  working_dir: ""
+  protocol: "uci"
+  ponder: false
+  polyglot:
+    enabled: false
+  draw_or_resign:
+    resign_enabled: false
+    offer_draw_enabled: false
+  online_moves:
+    online_egtb:
+      enabled: false
+  uci_options:
+    Hash: 64
+    Move Overhead: 300
+
+abort_time: 30
+fake_think_time: false
+rate_limiting_delay: 0
+move_overhead: 1000
+
+challenge:
+  concurrency: 1
+  sort_by: "best"
+  accept_bot: true
+  only_bot: false
+  max_increment: 20
+  min_increment: 0
+  max_base: 1800
+  min_base: 30
+  variants:
+    - standard
+  time_controls:
+    - bullet
+    - blitz
+    - rapid
+  modes:
+    - casual
+    - rated
+
+matchmaking:
+  allow_matchmaking: false
+  challenge_variant: "standard"
+  challenge_timeout: 30
+  challenge_initial_time:
+    - 180
+  challenge_increment:
+    - 2
+  opponent_rating_difference: 300
+  challenge_mode: "random"

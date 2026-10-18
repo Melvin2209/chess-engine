@@ -1,0 +1,8 @@
+build*/
+cmake-build-*/
+matches/
+.cache/
+compile_commands.json
+*.pgn
+.vscode/
+.idea/
