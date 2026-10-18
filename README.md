@@ -7,7 +7,7 @@ lichess bot.
 
 | | |
 |---|---|
-| **Estimated strength** | **≈ 2400 Elo** at 10s+0.1s, measured against Elo-limited Stockfish 16 ([details](#strength-estimate)) |
+| **Estimated strength** | **≈ 2500 Elo** at 10s+0.1s, measured against Elo-limited Stockfish 16 ([details](#strength-estimate)) |
 | **Search speed** | ≈ 1.9 M nodes/s (single thread, `bench`) |
 | **Perft speed** | ≈ 200 M nodes/s (startpos depth 6 in 603 ms) |
 | **Tests** | 67 GoogleTest cases, including 21 perft positions (+6 deep perft runs) |
@@ -164,17 +164,17 @@ was close to 50%.
 - 44 opening positions (`scripts/openings.epd`), each played with both colors
 - Hardware: an Intel Xeon @ 2.10 GHz (cloud VM, 4 vCPUs)
 
-Preliminary results (the longer matches are still running and this table will be updated):
+| Opponent | Games | W / D / L | Score | Elo difference | Performance |
+|---|---|---|---|---|---|
+| Stockfish 16, `UCI_Elo` 2400 | 200 | 111 / 13 / 76 | 58.8% | +61 ± 49 | ≈ 2460 |
+| Stockfish 16, `UCI_Elo` 2600 | 200 | 74 / 24 / 102 | 43.0% | −49 ± 43 | ≈ 2550 |
 
-| Opponent | Games | W / D / L | Score | Elo difference |
-|---|---|---|---|---|
-| Stockfish 16, `UCI_Elo` 1320 | 20 | 19 / 0 / 1 | 95.0% | +512 |
-| Stockfish 16, `UCI_Elo` 2000 | 30 | 24 / 1 / 5 | 81.7% | +260 ± 157 |
-| Stockfish 16, `UCI_Elo` 2400 | 30 | 15 / 2 / 13 | 53.3% | +23 ± 140 |
+Shorter preliminary runs: 95% against `UCI_Elo` 1320 (20 games) and 82% against `UCI_Elo` 2000 (30 games).
+All 400 games of the main matches ended normally (no time losses, crashes or illegal moves).
 
-**Estimate: about 2400 Elo on the CCRL scale.** Treat this as a rough figure:
+**Estimate: about 2500 Elo on the CCRL scale** (the two matches give 2460 and 2550). Treat this as a rough figure:
 
-- the error bars are wide (± 140 Elo at 95% for each match),
+- the error bars are wide (± 45–50 Elo at 95% for each 200-game match, and the two results do not fully agree),
 - Stockfish's strength limiter is calibrated at longer time controls and plays deliberately weak
   moves at random, which is not the same as a genuinely weaker engine,
 - a real rating requires a gauntlet against several engines of similar strength.
